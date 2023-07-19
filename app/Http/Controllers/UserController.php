@@ -58,6 +58,7 @@ class UserController extends Controller
 
         $success['user'] = $user;
         $success['token'] = $accessToken;
+        $success['message'] = "Nalog je uspjesno kreiran";
         return response()->json(['success' => $success], 200);
     }
 

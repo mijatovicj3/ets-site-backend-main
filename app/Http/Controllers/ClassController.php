@@ -2,56 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ClassModel;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\ClassModel;
 
 class ClassController extends Controller
 {
     public function index()
     {
-        $classes = ClassModel::all();
-
-        return view('classes.index', compact('classes'));
+        return ClassModel::all();
     }
 
     public function create()
     {
-        return view('classes.create');
+        //
     }
-    
+
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string',
-            'year' => 'required|integer',
-        ]);
-
-        ClassModel::create($request->all());
-
-        return redirect()->route('classes.index')->with('success', 'Class created successfully.');
+        //
     }
 
-    public function edit(ClassModel $class)
+    public function show(string $id)
     {
-        return view('classes.edit', compact('class'));
+        return ClassModel::find($id);
     }
 
-    public function update(Request $request, ClassModel $class)
+    public function edit(string $id)
     {
-        $request->validate([
-            'name' => 'required|string',
-            'year' => 'required|integer',
-        ]);
-
-        $class->update($request->all());
-
-        return redirect()->route('classes.index')->with('success', 'Class updated successfully.');
+        //
     }
 
-    public function destroy(ClassModel $class)
+    public function update(Request $request, string $id)
     {
-        $class->delete();
+        //
+    }
 
-        return redirect()->route('classes.index')->with('success', 'Class deleted successfully.');
+    public function destroy(string $id)
+    {
+        //
     }
 }
