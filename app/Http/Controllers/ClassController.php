@@ -34,7 +34,7 @@ class ClassController extends Controller
 
     public function show(string $id)
     {
-        return ClassModel::find($id);
+        return view('classes.show',compact('class'));
     }
 
     public function edit(string $id)
