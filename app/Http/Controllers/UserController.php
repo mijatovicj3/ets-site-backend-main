@@ -36,7 +36,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'first_name' => 'required',
             'last_name' => 'required',
-            'mail' => 'required|email',
+            'mail' => 'required|email|unique:users,mail',
             'password' => 'required|min:8',
             'confirm_password' => 'required|same:password',
             'gender' => '',
@@ -67,9 +67,10 @@ class UserController extends Controller
      * 
      * @return \Illuminate\Http\Response 
      */
-    public function details()
+   public function details()
     {
         $user = Auth::user();
         return response()->json(['success' => $user], 200);
     }
+  
 }

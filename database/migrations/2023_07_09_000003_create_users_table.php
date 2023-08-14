@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("mail");
             $table->string("password");
             $table->text("gender")->nullable();
-            $table->foreignId('role_id')->constrained();
+            $table->foreignId('role_id')->default(1)->constrained();
             $table->foreignId('ed_program_id')->nullable()->constrained();
             $table->foreignId('class_id')->nullable()->constrained();
             $table->timestamps();
